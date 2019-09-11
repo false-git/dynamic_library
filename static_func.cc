@@ -1,10 +1,5 @@
-static int t;
+#include "dynamic_test.h"
 
-using func = int (*)(int);
-
-int static_func(int a) {
-  t += a;
-  return t;
-}
+void static_func() {}
 
 func sf = static_func;

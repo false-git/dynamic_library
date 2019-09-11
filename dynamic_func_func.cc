@@ -1,20 +1,18 @@
-int dynamic_func(int);
+#include "dynamic_test.h"
 
-using func = int (*)(int);
-extern func df;
-
-static int t;
-
-int dynamic_func_func(int a) {
-  for (int i = 0; i < a; i++) {
-    t += dynamic_func(t + i);
+void dynamic_func_loop() {
+  for (int i = 0; i < LOOP_COUNT; i++) {
   }
-  return t;
 }
 
-int dynamic_func_pfunc(int a) {
-  for (int i = 0; i < a; i++) {
-    t += df(t + i);
+void dynamic_func_func() {
+  for (int i = 0; i < LOOP_COUNT; i++) {
+    dynamic_func();
   }
-  return t;
+}
+
+void dynamic_func_pfunc() {
+  for (int i = 0; i < LOOP_COUNT; i++) {
+    df();
+  }
 }
